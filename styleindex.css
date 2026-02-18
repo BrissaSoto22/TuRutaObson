@@ -140,3 +140,12 @@ body {
     margin-bottom: 25px;
 }
 
+/* Añade esto al final de tu styleindex.css */
+.map-mini-frame {
+    width: 100%;
+    height: 250px;
+    border: none;
+    border-radius: 12px;
+    margin-top: 10px;
+}
+
