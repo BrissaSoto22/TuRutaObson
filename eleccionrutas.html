@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rutas y Horarios</title>
+
+<link rel="stylesheet" href="css/stylerutas.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+
+        <div class="header">
+            <h1>Rutas</h1>
+            <p class="subtitle">Elige tu ruta</p>
+        </div>
+
+        <!-- === SECCIÓN RUTAS === -->
+        <div id="seccionRutas" class="contenido rutas-grid">
+
+            <div class="col-rutas">
+                <button class="btn" onclick="seleccionarRuta('Línea 1 - Blvd. - 200')"><i class="fas fa-bus"></i> Línea 1 - Blvd. - 200</button>
+                <button class="btn" onclick="seleccionarRuta('Línea 1 - Derecho - J García')"><i class="fas fa-bus"></i> Línea 1 - Derecho - J García</button>
+                <button class="btn" onclick="seleccionarRuta('Línea 2')"><i class="fas fa-bus"></i> Línea 2</button>
+                <button class="btn" onclick="seleccionarRuta('Línea 3')"><i class="fas fa-bus"></i> Línea 3</button>
+                <button class="btn" onclick="seleccionarRuta('Línea 4')"><i class="fas fa-bus"></i> Línea 4</button>
+                <button class="btn" onclick="seleccionarRuta('Línea 5 Norte')"><i class="fas fa-bus"></i> Línea 5 Norte</button>
+                <button class="btn" onclick="seleccionarRuta('Línea 5 Sur')"><i class="fas fa-bus"></i> Línea 5 Sur</button>
+                <button class="btn" onclick="seleccionarRuta('Línea 6')"><i class="fas fa-bus"></i> Línea 6</button>
+                <button class="btn" onclick="seleccionarRuta('Línea 6 - Libertad')"><i class="fas fa-bus"></i> Línea 6 - Libertad</button>
+                <button class="btn" onclick="seleccionarRuta('Línea 7 Express')"><i class="fas fa-bus"></i> Línea 7 Express</button>
+                <button class="btn" onclick="seleccionarRuta('Línea 8 Michoacan')"><i class="fas fa-bus"></i> Línea 8 Michoacan</button>
+                <button class="btn" onclick="seleccionarRuta('Línea 8 Directo')"><i class="fas fa-bus"></i> Línea 8 Directo</button>
+            </div>
+
+            <div class="col-rutas">
+                <button class="btn" onclick="seleccionarRuta('Línea 9 Cajeme')"><i class="fas fa-bus"></i> Línea 9 Cajeme</button>
+                <button class="btn" onclick="seleccionarRuta('Línea 10 - California')"><i class="fas fa-bus"></i> Línea 10 - California</button>
+                <button class="btn" onclick="seleccionarRuta('Línea 10 - Miguel Alemán')"><i class="fas fa-bus"></i> Línea 10 - Miguel Alemán</button>
+                <button class="btn" onclick="seleccionarRuta('Línea 11 - 200')"><i class="fas fa-bus"></i> Línea 11 - 200</button>
+                <button class="btn" onclick="seleccionarRuta('Línea 11 - Ramón Guzmán')"><i class="fas fa-bus"></i> Línea 11 - Ramón Guzmán</button>
+                <button class="btn" onclick="seleccionarRuta('Línea 12')"><i class="fas fa-bus"></i> Línea 12</button>
+                <button class="btn" onclick="seleccionarRuta('Línea 12 - Express')"><i class="fas fa-bus"></i> Línea 12 - Express</button>
+                <button class="btn" onclick="seleccionarRuta('Línea 13 - Porton')"><i class="fas fa-bus"></i> Línea 13 - Porton</button>
+                <button class="btn" onclick="seleccionarRuta('Línea 14 - Guerrero')"><i class="fas fa-bus"></i> Línea 14 - Guerrero</button>
+                <button class="btn" onclick="seleccionarRuta('Línea 14 - Miguel Alemán')"><i class="fas fa-bus"></i> Línea 14 - Miguel Alemán</button>
+                <button class="btn" onclick="seleccionarRuta('Línea 15')"><i class="fas fa-bus"></i> Línea 15</button>
+                <button class="btn" onclick="seleccionarRuta('Línea 16 Lado A')"><i class="fas fa-bus"></i> Línea 16 Lado A</button>
+            </div>
+
+        </div>
+
+        <!-- === SECCIÓN HORARIOS === -->
+        <div id="seccionHorarios" class="contenido horarios">
+            <div class="columna" id="col1"></div>
+            <div class="columna" id="col2"></div>
+        </div>
+
+        <!-- === FINAL === -->
+        <div id="seccionFinal" class="contenido final">
+            <h2>Ruta seleccionada:</h2>
+            <p id="mostrarRuta"></p>
+
+            <h2>Horario seleccionado:</h2>
+            <p id="mostrarHorario"></p>
+
+            <br><br>
+            <a href="index.html"><button class="btnconfirm">Confirmar</button></a>
+            <br>
+
+            <br><button class="btnnew" onclick="reiniciar()">Elegir otra ruta</button>
+        </div>
+
+    </div>
+</div>
+
+<script>
+let ruta = "";
+let horario = "";
+
+/* Seleccionar ruta */
+function seleccionarRuta(r) {
+    ruta = r;
+    localStorage.setItem("rutaSeleccionada", r);
+
+    document.querySelector(".header h1").textContent = "Horarios";
+    document.querySelector(".header .subtitle").textContent = "Selecciona un horario";
+
+    document.getElementById("seccionRutas").style.display = "none";
+    document.getElementById("seccionHorarios").style.display = "flex";
+
+    generarHorarios();
+}
+
+function generarHorarios() {
+    let col1 = document.getElementById("col1");
+    let col2 = document.getElementById("col2");
+
+    let hora = 7, min = 0;
+
+    for (let i = 0; i <= 25; i++) {
+        let display = (hora <= 12 ? hora : hora - 12) + ":" + (min === 0 ? "00" : "30") + " " + (hora < 12 ? "AM" : "PM");
+
+        let button = `<button class='btn' onclick="seleccionarHorario('${display}')">${display}</button>`;
+
+        if (i % 2 === 0) col1.innerHTML += button;
+        else col2.innerHTML += button;
+
+        min += 30;
+        if (min === 60) { min = 0; hora++; }
+    }
+}
+
+/* Seleccionar horario */
+function seleccionarHorario(h) {
+    horario = h;
+    localStorage.setItem("horarioSeleccionado", h);
+
+    document.querySelector(".header h1").textContent = "Confirmación";
+    document.querySelector(".header .subtitle").textContent = "Ruta y horario elegidos";
+
+    document.getElementById("seccionHorarios").style.display = "none";
+    document.getElementById("seccionFinal").style.display = "block";
+
+    document.getElementById("mostrarRuta").textContent = ruta;
+    document.getElementById("mostrarHorario").textContent = horario;
+}
+
+/* Reiniciar */
+function reiniciar() {
+    location.reload();
+}
+</script>
+
+</body>
+</html>

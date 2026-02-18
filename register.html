@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>TuRutaObson - Registro</title>
+    <link rel="stylesheet" href="css/stylelogin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<div class="login-container">
+    <div class="login-card">
+
+        <div class="login-header">
+            <div class="logo-circle">
+                <i class="fas fa-bus-alt"></i>
+            </div>
+            <h1>TuRutaObson</h1>
+            <p class="subtitle">Crear cuenta</p>
+        </div>
+
+        <div class="login-form-container">
+            <h2>Registro</h2>
+
+            <form onsubmit="registrarUsuario(event)">
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="regNombre" placeholder="Usuario" required>
+                </div>
+
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="regEmail" placeholder="Correo" required>
+                </div>
+
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="regPassword" placeholder="Contraseña" required>
+                </div>
+
+                <button type="submit" class="btn-login">
+                    <i class="fas fa-user-plus"></i> Registrarme
+                </button>
+            </form>
+
+            <p class="switch-text">
+                ¿Ya tienes cuenta?
+                <a href="login.html">Iniciar sesión</a>
+            </p>
+        </div>
+
+    </div>
+</div>
+<div id="modalExito" class="modal">
+    <div class="modal-content">
+        <div class="check-icon">✔</div>
+        <h2>¡Registro exitoso!</h2>
+        <p>Tu cuenta fue creada correctamente 🎉</p>
+        <button onclick="cerrarModal()">Aceptar</button>
+    </div>
+</div>
+
+
+
+<script>
+async function registrarUsuario(event) {
+    event.preventDefault();
+
+    const formData = new FormData();
+    formData.append("nombre", document.getElementById("regNombre").value);
+    formData.append("email", document.getElementById("regEmail").value);
+    formData.append("password", document.getElementById("regPassword").value);
+
+    const response = await fetch("php/register.php", {
+        method: "POST",
+        body: formData
+    });
+
+    const data = await response.json();
+
+    if (data.status === "success") {
+        document.getElementById("modalExito").style.display = "flex";
+    } else {
+        alert(data.message);
+    }
+}
+
+function cerrarModal() {
+    document.getElementById("modalExito").style.display = "none";
+    window.location.href = "login.html";
+}
+
+</script>
+
+
+</body>
+</html>

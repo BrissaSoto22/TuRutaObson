@@ -1,0 +1,197 @@
+/* === RESET === */
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #1c1c1c 0%, #0e5c2f 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* CARD */
+.container { width: 100%; max-width: 900px; }
+
+.card {
+    background: #ffffff;
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+    overflow: hidden;
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* HEADER */
+.header {
+    background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+    color: white;
+    padding: 35px;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 2rem;
+}
+
+.subtitle {
+    opacity: 0.8;
+    font-size: 1.1rem;
+    margin-top: 5px;
+}
+
+/* CONTENIDO */
+.contenido {
+    padding: 40px;
+}
+
+/* RUTAS GRID */
+.rutas-grid {
+    display: flex;
+    gap: 35px;
+}
+
+.col-rutas {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* BOTONES */
+.btn {
+    width: 100%;
+    padding: 15px;
+    background: #27ae60;
+    background: linear-gradient(135deg, #2e7d32 0%, #388e3c 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn i {
+    font-size: 1.2rem;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+}
+
+
+.btnconfirm {
+    width: 50%;
+    padding: 15px;
+    background: #27ae60;
+    background: linear-gradient(135deg, #2e7d32 0%, #388e3c 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s;
+    display: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.btnconfirm i {
+    font-size: 1.2rem;
+}
+
+.btnconfirm:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+}
+
+.btnnew {
+    width: 30%;
+    padding: 15px;
+    background: #0f4124;
+    background: linear-gradient(135deg, #2e7d32 0%, #388e3c 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s;
+    display: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.btnnew i {
+    font-size: 1.2rem;
+}
+
+.btnnew:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+}
+
+
+
+/* HORARIOS */
+.horarios {
+    display: none;
+    gap: 30px;
+}
+
+.columna {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* FINAL */
+.final {
+    display: none;
+    text-align: center;
+}
+
+.final h2 {
+    margin-top: 10px;
+    color: #1c7430;
+}
+
+.final p {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 700px) {
+    .rutas-grid,
+    .horarios {
+        flex-direction: column;
+    }
+
+    .col-rutas,
+    .columna {
+        width: 100%;
+    }
+
+    .btn {
+        font-size: 0.95rem;
+    }
+}
