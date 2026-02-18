@@ -19,10 +19,9 @@ body {
     padding: 20px;
 }
 
-/* Contenedor */
 .login-container {
-    width: 30%;
-    min-width: 330px;
+    width: 95%; /* Que ocupe casi todo el ancho en móviles */
+    max-width: 400px; /* Pero que no pase de esto en PC */
 }
 
 .login-card {
@@ -140,3 +139,4 @@ body {
 #infoSeleccion {
     margin-bottom: 25px;
 }
+
